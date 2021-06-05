@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="DiffbotData\**" />
+    <Compile Remove="InitialSetup_Data\**" />
+    <Content Remove="DiffbotData\**" />
+    <Content Remove="InitialSetup_Data\**" />
+    <EmbeddedResource Remove="DiffbotData\**" />
+    <EmbeddedResource Remove="InitialSetup_Data\**" />
+    <None Remove="DiffbotData\**" />
+    <None Remove="InitialSetup_Data\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="C:\Users\NamanSinha\.nuget\packages\microsoft.azure.cosmos\3.16.0\contentFiles\any\netstandard2.0\ThirdPartyNotice.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.AppConfiguration.AspNetCore" Version="4.2.1" />
+    <PackageReference Include="Microsoft.Azure.Storage.Blob" Version="11.1.7" />
+    <PackageReference Include="Microsoft.Azure.Storage.Common" Version="11.2.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.1" />
+  </ItemGroup>
+
+
+</Project>
