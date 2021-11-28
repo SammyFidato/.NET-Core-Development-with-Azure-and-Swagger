@@ -26,7 +26,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development",
         "AppConfigConnection": "Paste the connection string of your Azure App Configuration resourcse here. You will find it in the Access Keys section of you resource."
       },
-      "applicationUrl": "http://localhost:5000"
+      "applicationUrl": "http://localhost:80"
     }
   }
 }
