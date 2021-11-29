@@ -91,5 +91,14 @@ namespace myProject.Controllers
 
         }
 
+        [HttpGet]
+        [Route("UploadFiles")]
+        public async Task<string> ImageAsync()
+        {
+
+            return "NULL";
+
+        }
+
     }
 }
