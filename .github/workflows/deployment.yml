@@ -81,7 +81,7 @@ jobs:
         subscriptionId: "faab79a5-d424-4699-b3ff-b0cf94ea9f90" # Subscription ID from Azure's Subscriptions
         resourceGroup: "aspdotnetswagger" # Resource Group name
         serviceName: "aspdotnetswagger" # Name of API in API Management
-        apiName: "cf58df471f9b4c6181b19fe73f0e7ec2" # API Name. Pick it up from tracing request when you open a specific API in "API Management Services" -> APIS 
+        apiName: "dotnetswagger" # API Name. Pick it up from tracing request when you open a specific API in "API Management Services" -> APIS 
         authorization: "SharedAccessSignature integration&202112291501&ze0NKlr8oJxtFRsDtJyDFJvSi1lFsffieMjwZD8icSpm4oUYq4Y1BxX09RYlH5wJAAQoqMuYXk/AS6wr86tVjA==" # authorization from "API Management Services" -> "Management API"  
         apiPath: "itisfromapim"
         openApiLink: "https://aspdotnetswagger.azurewebsites.net/azure_swagger_dotnet/swagger/v1/swagger.json"
