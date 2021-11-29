@@ -57,31 +57,31 @@ jobs:
         path:  /home/runner/work/.NET-Core-Development-with-Azure-and-Swagger/.NET-Core-Development-with-Azure-and-Swagger/DotNet-Azure-Swagger/myProject/published/
       
       
-    - name: Update Azure API Management
-      # You may pin to the exact commit or the version.
-      # uses: solidify/github-action-update-azapim@e931b7b394a89bb8f70c23213a44be4cc233df96
-      uses: solidify/github-action-update-azapim@v0.9.5
-      with:
-        # URL to Swagger
-        swaggerUrl: ""
-        # APIM endpoint URL
-        apiManagementEndpointUrl: "https://aspdotnetswagger.azure-api.net"
-        # APIM credentials
-        creds: ""
-      
-      
-      
-      
-      
-      
-      
-#     - name: Update Azure API Management Services
-#       uses: kipriz/update-azure-api-management@v1
+#     - name: Update Azure API Management
+#       # You may pin to the exact commit or the version.
+#       # uses: solidify/github-action-update-azapim@e931b7b394a89bb8f70c23213a44be4cc233df96
+#       uses: solidify/github-action-update-azapim@v0.9.5
 #       with:
-#         subscriptionId: "faab79a5-d424-4699-b3ff-b0cf94ea9f90" # Subscription ID from Azure's Subscriptions
-#         resourceGroup: "aspdotnetswagger" # Resource Group name
-#         serviceName: "aspdotnetswagger" # Name of API in API Management
-#         apiName: "cf58df471f9b4c6181b19fe73f0e7ec2" # API Name. Pick it up from tracing request when you open a specific API in "API Management Services" -> APIS 
-#         authorization: "SharedAccessSignature integration&202112291501&ze0NKlr8oJxtFRsDtJyDFJvSi1lFsffieMjwZD8icSpm4oUYq4Y1BxX09RYlH5wJAAQoqMuYXk/AS6wr86tVjA==" # authorization from "API Management Services" -> "Management API"  
-#         apiPath: "itisfromapim"
-#         openApiLink: "https://aspdotnetswagger.azurewebsites.net/azure_swagger_dotnet/swagger/v1/swagger.json"
+#         # URL to Swagger
+#         swaggerUrl: ""
+#         # APIM endpoint URL
+#         apiManagementEndpointUrl: "https://aspdotnetswagger.azure-api.net"
+#         # APIM credentials
+#         creds: ""
+      
+      
+      
+      
+      
+      
+      
+    - name: Update Azure API Management Services
+      uses: kipriz/update-azure-api-management@v1
+      with:
+        subscriptionId: "faab79a5-d424-4699-b3ff-b0cf94ea9f90" # Subscription ID from Azure's Subscriptions
+        resourceGroup: "aspdotnetswagger" # Resource Group name
+        serviceName: "aspdotnetswagger" # Name of API in API Management
+        apiName: "cf58df471f9b4c6181b19fe73f0e7ec2" # API Name. Pick it up from tracing request when you open a specific API in "API Management Services" -> APIS 
+        authorization: "SharedAccessSignature integration&202112291501&ze0NKlr8oJxtFRsDtJyDFJvSi1lFsffieMjwZD8icSpm4oUYq4Y1BxX09RYlH5wJAAQoqMuYXk/AS6wr86tVjA==" # authorization from "API Management Services" -> "Management API"  
+        apiPath: "itisfromapim"
+        openApiLink: "https://aspdotnetswagger.azurewebsites.net/azure_swagger_dotnet/swagger/v1/swagger.json"
