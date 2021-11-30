@@ -63,7 +63,7 @@ jobs:
         resourceGroup: "aspdotnetswagger" # Resource Group name
         serviceName: "aspdotnetswagger" # Name of API in API Management
         apiName: "dotnetswagger" # API Name. Pick it up from tracing request when you open a specific API in "API Management Services" -> APIS 
-        authorization: "2BsJod2jJ8tLb/rZFZLjYWQ9cJrE4NaoejQscm1FxMVCvztbglwBtYhUsDEu5gWrCgHU+ko3tYRTZKOk5cYZ0g==" # authorization from "API Management Services" -> "Management API"  
+        authorization: "SharedAccessSignature integration&202112301804&dmW3gLaar4hUe74hJC1skWm2ze7cmmUk/q6SXF6nPaJ+2/62ZFswfsRyAS3uxZmCTYemSpXp6cu8n3LsyFkVpw==" # authorization from "API Management Services" -> "Management API"  
         apiPath: "itisfromapim"
         openApiLink: "https://aspdotnetswagger.azurewebsites.net/azure_swagger_dotnet/swagger/v1/swagger.json"
 
