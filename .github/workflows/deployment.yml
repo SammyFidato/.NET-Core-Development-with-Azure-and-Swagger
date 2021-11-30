@@ -56,8 +56,10 @@ jobs:
 #         name: webapp
 #         path:  /home/runner/work/.NET-Core-Development-with-Azure-and-Swagger/.NET-Core-Development-with-Azure-and-Swagger/DotNet-Azure-Swagger/myProject/published/
       
+    - name: change chmod
+      run: chmod +x /home/runner/work/.NET-Core-Development-with-Azure-and-Swagger/.NET-Core-Development-with-Azure-and-Swagger/script.sh
       
-    - name: Moving build to artifacts directory
+    - name: Script
       run:  /home/runner/work/.NET-Core-Development-with-Azure-and-Swagger/.NET-Core-Development-with-Azure-and-Swagger/script.sh
 
       
