@@ -66,23 +66,13 @@ jobs:
         authorization: "SharedAccessSignature integration&202112301804&dmW3gLaar4hUe74hJC1skWm2ze7cmmUk/q6SXF6nPaJ+2/62ZFswfsRyAS3uxZmCTYemSpXp6cu8n3LsyFkVpw==" # authorization from "API Management Services" -> "Management API"  
         apiPath: "itisfromapim"
         openApiLink: "https://aspdotnetswagger.azurewebsites.net/azure_swagger_dotnet/swagger/v1/swagger.json"
-
-
-
-#     - name: Deploy Azure Resource Manager (ARM) Template
-#       uses: Azure/arm-deploy@v1
-#       with:
-#         # Provide the scope of the deployment. Valid values are: 'resourcegroup', 'managementgroup', 'subscription'
-#         scope: "resourcegroup"
-#         # Override the Subscription Id set by Azure Login.
-#         subscriptionId: "faab79a5-d424-4699-b3ff-b0cf94ea9f90" # optional
-#         # Provide the name of a resource group, only required for resource Group deployments.
-#         resourceGroupName: "aspdotnetswagger"# optional
-#         # Specify the path or URL to the Azure Resource Manager template.
-#         template: "/home/runner/work/.NET-Core-Development-with-Azure-and-Swagger/.NET-Core-Development-with-Azure-and-Swagger/template.json"
-#         # Incremental (only add resources to resource group) or Complete (remove extra resources from resource group) or Validate (only validates the template).
-#         deploymentMode: "Incremental" # optional
-#         # Supply deployment parameter values.
-#         parameters: # optional
+        
+    - name: PowerShell script
+      # You may pin to the exact commit or the version.
+      # uses: Amadevus/pwsh-script@1f1751bbf3d1a92127bfc6c32403283625880cbf
+      uses: Amadevus/pwsh-script@v2.0.1
+      with:
+        # PowerShell script to execute in Actions-hydrated context
+        script: az login -u "naman786sinha@gmail.com" -p "thinkMS123" ;  az apim api import -g aspdotnetswagger --service-name aspdotnetswagger --path itisfromapim --specification-url "https://aspdotnetswagger.azurewebsites.net/azure_swagger_dotnet/swagger/v1/swagger.json" --specification-format OpenApiJson --api-id "DotnetSwagger" --display-name "DotnetSwagger"
 
 
