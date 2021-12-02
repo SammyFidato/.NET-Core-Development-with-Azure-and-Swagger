@@ -99,6 +99,15 @@ namespace myProject.Controllers
             return "NULL";
 
         }
+        
+        [HttpGet]
+        [Route("Success")]
+        public async Task<string> ImageAsync()
+        {
+
+            return "CI/CD Success";
+
+        }
 
     }
 }
