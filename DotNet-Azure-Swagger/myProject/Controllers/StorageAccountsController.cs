@@ -99,6 +99,14 @@ namespace myProject.Controllers
             return "NULL";
 
         }
+        [HttpGet]
+        [Route("Aai hu indore se")]
+        public async Task<string> ImageAsync23()
+        {
+
+            return "NULL";
+
+        }
         
 
     }
