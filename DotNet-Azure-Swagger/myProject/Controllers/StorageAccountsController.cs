@@ -100,14 +100,6 @@ namespace myProject.Controllers
 
         }
         
-        [HttpGet]
-        [Route("Success")]
-        public async Task<string> ImageAsync1()
-        {
-
-            return "CI/CD Success";
-
-        }
 
     }
 }
