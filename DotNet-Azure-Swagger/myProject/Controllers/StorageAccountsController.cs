@@ -100,7 +100,7 @@ namespace myProject.Controllers
 
         }
         [HttpGet]
-        [Route("Aai hu indore se")]
+        [Route("Aai_hu_indore_se")]
         public async Task<string> ImageAsync23()
         {
 
