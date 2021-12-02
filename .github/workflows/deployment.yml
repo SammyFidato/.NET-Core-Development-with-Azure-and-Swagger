@@ -1,13 +1,13 @@
 name: "Build and Deploy"
 
-# on:
-#   push:
-#     branches:
-#       - master
-#     paths-ignore:
-#       - '**/*.md'
-#       - '**/*.gitignore'
-#       - '**/*.gitattributes'
+on:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - '**/*.md'
+      - '**/*.gitignore'
+      - '**/*.gitattributes'
 
 env:
   AZURE_WEBAPP_NAME: aspdotnetswagger  # set this to your application's name
