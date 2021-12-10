@@ -22,7 +22,7 @@ def get_token():
     return (str(json.loads(response.text)['access_token']))
 
 def get_policy_from_xml():
-    with open('./policy.xml','r') as file:
+    with open('/home/runner/work/.NET-Core-Development-with-Azure-and-Swagger/.NET-Core-Development-with-Azure-and-Swagger/policy.xml','r') as file:
         policy = file.read()
     return(str(policy))
 
