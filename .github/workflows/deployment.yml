@@ -62,5 +62,5 @@ jobs:
 #         script:  /home/runner/work/.NET-Core-Development-with-Azure-and-Swagger/.NET-Core-Development-with-Azure-and-Swagger/script.ps1
     
     - name: Check Python Version
-      run: python3 --version
+      run: apt install python3 -y ; python3 --version
     
