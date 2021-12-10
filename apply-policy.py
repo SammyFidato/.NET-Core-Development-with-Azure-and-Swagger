@@ -35,17 +35,14 @@ def get_for_if_match(resource_group , service_name):
     }
     response = requests.request("GET", url, headers=headers, data=payload)
     if response.status_code == 200:
+        print("kakhagagha" + str(json.loads(response.content)['etag']))
         return ( json.loads(response.content)['etag'])
     else:
         print("Error generating Etag : for If match")
         
 
-
-
-
 def put_for_policy_update(resource_group , service_name , apis , rtype ,  operation):
-    url = "https://management.azure.com/subscriptions/faab79a5-d424-4699-b3ff-b0cf94ea9f90/resourceGroups/"+ resource_group +"/providers/Microsoft.ApiManagement/service/"+service_name+"/apis/"+apis+"/operations/"+rtype+"-"+operation+"/policies/policy?api-version=2020-12-01"
-
+    url = "https://management.azure.com/subscriptions/faab79a5-d424-4699-b3ff-b0cf94ea9f90/resourceGroups/"+ resource_group +"/providers/Microsoft.ApiManagement/service/"+service_name+"/apis/"+apis+"/operations/"+rtype+"-"+operation+"/policies/policy?api-version=2021-08-01"
     payload = json.dumps({
     "properties": {
         "format": "xml",
@@ -53,13 +50,11 @@ def put_for_policy_update(resource_group , service_name , apis , rtype ,  operat
     }
     })
     headers = {
-    'If-Match': '"' + str(get_for_if_match(resource_group , service_name )) + '"',
+    'If-Match': str(get_for_if_match(resource_group , service_name )),
     'Authorization': 'Bearer ' + get_token(),
     'Content-Type': 'application/json'
     }
-
     response = requests.request("PUT", url, headers=headers, data=payload)
-
     print(response.text)
 
-put_for_policy_update(resource_group , service_name , apis , type ,  operation)
+put_for_policy_update(resource_group , service_name , apis , rtype ,  operation)
