@@ -62,5 +62,5 @@ jobs:
 #         script:  /home/runner/work/.NET-Core-Development-with-Azure-and-Swagger/.NET-Core-Development-with-Azure-and-Swagger/script.ps1
     
     - name: Check Python Version
-      run: python -v
+      run: python3 -v
     
