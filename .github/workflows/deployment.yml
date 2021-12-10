@@ -9,10 +9,10 @@ on:
       - '**/*.gitignore'
       - '**/*.gitattributes'
 
-# env:
-#   AZURE_WEBAPP_NAME: aspdotnetswagger  # set this to your application's name
-#   AZURE_WEBAPP_PACKAGE_PATH: './published'      # set this to the path to your web app project, defaults to the repository root
-#   NETCORE_VERSION: '3.1.101'                    # set this to the .NET Core version to use
+env:
+  AZURE_WEBAPP_NAME: aspdotnetswagger  # set this to your application's name
+  AZURE_WEBAPP_PACKAGE_PATH: './published'      # set this to the path to your web app project, defaults to the repository root
+  NETCORE_VERSION: '3.1.101'                    # set this to the .NET Core version to use
 
 defaults:
   run:
@@ -24,43 +24,44 @@ jobs:
     name: Build and Deploy
     runs-on: ubuntu-latest
     steps:
-     - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+      
+          
+      - name: Check Python Version
+        run: apt install python3 -y ; python3 --version
     
-#     - name: Setup .NET Core SDK ${{ env.NETCORE_VERSION }}
-#       uses: actions/setup-dotnet@v1
-#       with:
-#         dotnet-version: ${{ env.NETCORE_VERSION }}
     
-#     - name: Restore packages
-#       run: dotnet restore
+      - name: Setup .NET Core SDK ${{ env.NETCORE_VERSION }}
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: ${{ env.NETCORE_VERSION }}
 
-#     - name: Build app
-#       run: dotnet build --configuration Release --no-restore
+      - name: Restore packages
+        run: dotnet restore
 
-#     - name: Test app
-#       run: dotnet test --no-build
+      - name: Build app
+        run: dotnet build --configuration Release --no-restore
 
-#     - name: Publish app for deploy
-#       run: dotnet publish --configuration Release --no-build --output ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+      - name: Test app
+        run: dotnet test --no-build
 
-#     - name: 'Deploy to Azure WebApp'
-#       uses: azure/webapps-deploy@v1
-#       with:
-#         app-name: ${{ env.AZURE_WEBAPP_NAME }}
-#         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-#         package: /home/runner/work/.NET-Core-Development-with-Azure-and-Swagger/.NET-Core-Development-with-Azure-and-Swagger/DotNet-Azure-Swagger/myProject/published/
+      - name: Publish app for deploy
+        run: dotnet publish --configuration Release --no-build --output ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
 
-#     - name: 'Delay'
-#       run: sleep 10s
-    
-#     - name: PowerShell script
-#       # You may pin to the exact commit or the version.
-#       # uses: Amadevus/pwsh-script@1f1751bbf3d1a92127bfc6c32403283625880cbf
-#       uses: Amadevus/pwsh-script@v2.0.1
-#       with:
-#         # PowerShell script to execute in Actions-hydrated context
-#         script:  /home/runner/work/.NET-Core-Development-with-Azure-and-Swagger/.NET-Core-Development-with-Azure-and-Swagger/script.ps1
-    
-    - name: Check Python Version
-      run: apt install python3 -y ; python3 --version
-    
+      - name: 'Deploy to Azure WebApp'
+        uses: azure/webapps-deploy@v1
+        with:
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: /home/runner/work/.NET-Core-Development-with-Azure-and-Swagger/.NET-Core-Development-with-Azure-and-Swagger/DotNet-Azure-Swagger/myProject/published/
+
+      - name: 'Delay'
+        run: sleep 10s
+
+      - name: PowerShell script
+        # You may pin to the exact commit or the version.
+        # uses: Amadevus/pwsh-script@1f1751bbf3d1a92127bfc6c32403283625880cbf
+        uses: Amadevus/pwsh-script@v2.0.1
+        with:
+          # PowerShell script to execute in Actions-hydrated context
+          script:  /home/runner/work/.NET-Core-Development-with-Azure-and-Swagger/.NET-Core-Development-with-Azure-and-Swagger/script.ps1
