@@ -70,5 +70,6 @@ jobs:
           
       - uses: actions/setup-python@v2
         with:
+          path: ${{ github.workspace }}/.github/workflows/CreatePolicy/
           python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
-      - run: pip install -r ${{ github.workspace }}/.github/workflows/CreatePolicy/requirements.txt ; python ${{ github.workspace }}/.github/workflows/CreatePolicy/apply-policy.py --resource_group aspdotnetswagger --service_name aspdotnetswagger --apis DotnetSwagger --rtype get --operation Aai_hu_indore_se
+      - run: cd ${{ github.workspace }}/.github/workflows/CreatePolicy/ ; pip install -r ./requirements.txt ; python ./apply-policy.py --resource_group aspdotnetswagger --service_name aspdotnetswagger --apis DotnetSwagger --rtype get --operation Aai_hu_indore_se
