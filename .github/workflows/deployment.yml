@@ -46,13 +46,13 @@ jobs:
       - name: ls package
         run: echo ${{ github.workspace }} ; cd ${{ github.workspace }} ; ls -R
 
-#       - name: 'Deploy to Azure WebApp'
-#         uses: azure/webapps-deploy@v1
-#         with:
-#           path: ${{ github.workspace }}/DotNet-Azure-Swagger/myProject/
-#           app-name: ${{ env.AZURE_WEBAPP_NAME }}
-#           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-#           package: ./published/
+      - name: 'Deploy to Azure WebApp'
+        uses: azure/webapps-deploy@v1
+        with:
+          path: ${{ github.workspace }}
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: ./DotNet-Azure-Swagger/myProject/published/published/
 
 #       - name: 'Delay'
 #         run: sleep 10s
