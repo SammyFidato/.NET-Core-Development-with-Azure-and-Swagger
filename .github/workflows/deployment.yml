@@ -57,14 +57,14 @@ jobs:
       - name: CD APIM
         run: cd ${{ github.workspace }}/.github/workflows/ImportAPIM ; ls -R
 
-#       - name: Importing APIM
-#         # You may pin to the exact commit or the version.
-#         # uses: Amadevus/pwsh-script@1f1751bbf3d1a92127bfc6c32403283625880cbf
-#         uses: Amadevus/pwsh-script@v2.0.1
-#         with:
-#           # PowerShell script to execute in Actions-hydrated context
-#           path: ${{ github.workspace }}/.github/workflows/ImportAPIM
-#           script: ./script.ps1 $GITHUB_RUN_ID
+      - name: Importing APIM
+        # You may pin to the exact commit or the version.
+        # uses: Amadevus/pwsh-script@1f1751bbf3d1a92127bfc6c32403283625880cbf
+        uses: Amadevus/pwsh-script@v2.0.1
+        with:
+          # PowerShell script to execute in Actions-hydrated context
+          path: ${{ github.workspace }}/.github/workflows/ImportAPIM/
+          script: ./script.ps1 $GITHUB_RUN_ID
           
 #       - uses: actions/setup-python@v2
 #         with:
