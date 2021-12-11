@@ -64,7 +64,7 @@ jobs:
         with:
           # PowerShell script to execute in Actions-hydrated context
           path: ${{ github.workspace }}/.github/workflows/ImportAPIM/
-          script: ./script.ps1 $GITHUB_RUN_ID
+          script: .\script.ps1 $GITHUB_RUN_ID
           
 #       - uses: actions/setup-python@v2
 #         with:
