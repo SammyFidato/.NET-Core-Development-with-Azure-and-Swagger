@@ -44,6 +44,9 @@ jobs:
         run: dotnet publish --configuration Release --no-build --output ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
         
       - name: Print workspace
+        run: pwd ; ls -R
+        
+      - name: Print workspace
         run: cd ${{ env.GITHUB_WORKSPACE }} ; pwd ; ls -R
         
       - name: Print Action Path
