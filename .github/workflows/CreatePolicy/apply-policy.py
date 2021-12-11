@@ -34,7 +34,7 @@ def get_token():
     return (str(json.loads(response.text)['access_token']))
 
 def get_policy_from_xml():
-    with open('./policy.xml','r') as file:
+    with open('policy.xml','r') as file:
         policy = file.read()
     return(str(policy))
 
@@ -69,7 +69,7 @@ def put_for_policy_update(resource_group , service_name , apis , rtype ,  operat
     response = requests.request("PUT", url, headers=headers, data=payload)
     print(response.text)
 
-print("PATH           ")
-os.system("pwd")
+directory = os.getcwd()
+print("HELOOOOOOOOOOOOOOO" + str(directory))
 put_for_policy_update(args.resource_group , args.service_name , args.apis , args.rtype ,  args.operation)
 
