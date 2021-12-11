@@ -46,9 +46,10 @@ jobs:
       - name: 'Deploy to Azure WebApp'
         uses: azure/webapps-deploy@v1
         with:
+          path: ${{ github.workspace }}/DotNet-Azure-Swagger/myProject/
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: ${GITHUB_WORKSPACE}/DotNet-Azure-Swagger/myProject/published/
+          package: ./published/
 
       - name: 'Delay'
         run: sleep 10s
@@ -59,9 +60,11 @@ jobs:
         uses: Amadevus/pwsh-script@v2.0.1
         with:
           # PowerShell script to execute in Actions-hydrated context
-          script: ${GITHUB_WORKSPACE}/.github/workflows/ImportAPIM/script.ps1  $GITHUB_RUN_ID
+          path: ${{ github.workspace }}/.github/workflows/ImportAPIM/
+          script: ./script.ps1  $GITHUB_RUN_ID
 
       - uses: actions/setup-python@v2
         with:
+          path:  ${{ github.workspace }}/.github/workflows/CreatePolicy/
           python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
-      - run: pip install -r  ${GITHUB_WORKSPACE}/.github/workflows/CreatePolicy/requirements.txt ; python ${GITHUB_WORKSPACE}/.github/workflows/CreatePolicy/apply-policy.py --resource_group aspdotnetswagger --service_name aspdotnetswagger --apis DotnetSwagger --rtype get --operation Aai_hu_indore_se
+      - run: pip install -r requirements.txt ; python ./apply-policy.py --resource_group aspdotnetswagger --service_name aspdotnetswagger --apis DotnetSwagger --rtype get --operation Aai_hu_indore_se
