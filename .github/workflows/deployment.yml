@@ -45,6 +45,9 @@ jobs:
         
       - name: Print workspace
         run: cd ${{ env.GITHUB_WORKSPACE }} ; pwd ; ls -R
+        
+      - name: Print Action Path
+        run: cd ${{ env.GITHUB_ACTION_PATH }} ; pwd ; ls -R
 
 #       - name: 'Deploy to Azure WebApp'
 #         uses: azure/webapps-deploy@v1
