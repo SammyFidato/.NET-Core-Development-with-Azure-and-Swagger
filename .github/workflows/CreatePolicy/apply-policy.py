@@ -3,6 +3,7 @@
 import requests
 import json
 import argparse
+import os
 
 parser=argparse.ArgumentParser()
 
@@ -69,6 +70,6 @@ def put_for_policy_update(resource_group , service_name , apis , rtype ,  operat
     print(response.text)
 
 printf("PATH           ")
-system.os("pwd")
+os.system("pwd")
 put_for_policy_update(args.resource_group , args.service_name , args.apis , args.rtype ,  args.operation)
 
