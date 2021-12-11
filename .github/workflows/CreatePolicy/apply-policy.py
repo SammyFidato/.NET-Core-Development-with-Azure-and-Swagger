@@ -69,7 +69,7 @@ def put_for_policy_update(resource_group , service_name , apis , rtype ,  operat
     response = requests.request("PUT", url, headers=headers, data=payload)
     print(response.text)
 
-printf("PATH           ")
+print("PATH           ")
 os.system("pwd")
 put_for_policy_update(args.resource_group , args.service_name , args.apis , args.rtype ,  args.operation)
 
