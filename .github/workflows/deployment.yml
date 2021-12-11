@@ -65,8 +65,8 @@ jobs:
           # PowerShell script to execute in Actions-hydrated context
           script: ${{ github.workspace }}/.github/workflows/ImportAPIM/script.ps1 $GITHUB_RUN_ID
           
-#       - uses: actions/setup-python@v2
-#         with:
-#           path:  ${{ github.workspace }}/.github/workflows/CreatePolicy/
-#           python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
-#       - run: pip install -r requirements.txt ; python ./apply-policy.py --resource_group aspdotnetswagger --service_name aspdotnetswagger --apis DotnetSwagger --rtype get --operation Aai_hu_indore_se
+      - uses: actions/setup-python@v2
+        with:
+          path:  ${{ github.workspace }}/.github/workflows/CreatePolicy/
+          python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
+      - run: pip install -r requirements.txt ; python ./apply-policy.py --resource_group aspdotnetswagger --service_name aspdotnetswagger --apis DotnetSwagger --rtype get --operation Aai_hu_indore_se
