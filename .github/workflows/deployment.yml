@@ -26,60 +26,49 @@ jobs:
     steps:
       - uses: actions/checkout@v2    
       
+    
       
-      - name: Build app
-        run: echo ${{ github.runid }}
         
+      - name: Setup .NET Core SDK ${{ env.NETCORE_VERSION }}
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: ${{ env.NETCORE_VERSION }}
+
+      - name: Restore packages
+        run: dotnet restore
+
       - name: Build app
-        run: echo ${{ github.run.id }}
-      
-      - name: Build app
-        run: echo ${{ github.run_id }}
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Test app
+        run: dotnet test --no-build
+
+      - name: Publish app for deploy
+        run: dotnet publish --configuration Release --no-build --output ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+
+      - name: 'Deploy to Azure WebApp'
+        uses: azure/webapps-deploy@v1
+        with:
+          path: ${{ github.workspace }}
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: ./DotNet-Azure-Swagger/myProject/published/
+
+      - name: 'Delay'
+        run: sleep 10s
         
-      - name: Build app
-        run: echo ${{ github.runId }}
-        
-#       - name: Setup .NET Core SDK ${{ env.NETCORE_VERSION }}
-#         uses: actions/setup-dotnet@v1
-#         with:
-#           dotnet-version: ${{ env.NETCORE_VERSION }}
+      - name: CD APIM
+        run: cd ${{ github.workspace }}/.github/workflows/ImportAPIM ; ls -R
 
-#       - name: Restore packages
-#         run: dotnet restore
-
-#       - name: Build app
-#         run: dotnet build --configuration Release --no-restore
-
-#       - name: Test app
-#         run: dotnet test --no-build
-
-#       - name: Publish app for deploy
-#         run: dotnet publish --configuration Release --no-build --output ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
-
-#       - name: 'Deploy to Azure WebApp'
-#         uses: azure/webapps-deploy@v1
-#         with:
-#           path: ${{ github.workspace }}
-#           app-name: ${{ env.AZURE_WEBAPP_NAME }}
-#           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-#           package: ./DotNet-Azure-Swagger/myProject/published/
-
-#       - name: 'Delay'
-#         run: sleep 10s
-        
-#       - name: CD APIM
-#         run: cd ${{ github.workspace }}/.github/workflows/ImportAPIM ; ls -R
-
-#       - name: Importing APIM
-#         # You may pin to the exact commit or the version.
-#         # uses: Amadevus/pwsh-script@1f1751bbf3d1a92127bfc6c32403283625880cbf
-#         uses: Amadevus/pwsh-script@v2.0.1
-#         with:
-#           # PowerShell script to execute in Actions-hydrated context
-#           script: ${{ github.workspace }}/.github/workflows/ImportAPIM/script.ps1 ${{ github.runid }}
+      - name: Importing APIM
+        # You may pin to the exact commit or the version.
+        # uses: Amadevus/pwsh-script@1f1751bbf3d1a92127bfc6c32403283625880cbf
+        uses: Amadevus/pwsh-script@v2.0.1
+        with:
+          # PowerShell script to execute in Actions-hydrated context
+          script: ${{ github.workspace }}/.github/workflows/ImportAPIM/script.ps1 ${{ github.run_id }}
           
-#       - uses: actions/setup-python@v2
-#         with:
-#           path:  ${{ github.workspace }}/.github/workflows/CreatePolicy/
-#           python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
-#       - run: pip install -r requirements.txt ; python ./apply-policy.py --resource_group aspdotnetswagger --service_name aspdotnetswagger --apis DotnetSwagger --rtype get --operation Aai_hu_indore_se
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
+      - run: pip install -r ${{ github.workspace }}/.github/workflows/CreatePolicy/requirements.txt ; python ${{ github.workspace }}/.github/workflows/CreatePolicy/apply-policy.py --resource_group aspdotnetswagger --service_name aspdotnetswagger --apis DotnetSwagger --rtype get --operation Aai_hu_indore_se
