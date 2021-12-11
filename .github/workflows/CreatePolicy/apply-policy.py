@@ -2,13 +2,24 @@
 
 import requests
 import json
-import sys
+import argparse
 
-resource_group = sys.argv[1]
-service_name = sys.argv[2]
-apis = sys.argv[3]
-rtype = sys.argv[4]
-operation = sys.argv[5]
+parser=argparse.ArgumentParser()
+
+parser.add_argument('--resource_group', help='Resource Group Name')
+parser.add_argument('--service_name', help='Service Name of the APIM')
+parser.add_argument('--apis', help='Apis Name')
+parser.add_argument('--rtype', help='Type of the API (get,put,post etc)')
+parser.add_argument('--operation', help='Operation Name')
+
+
+args=parser.parse_args()
+
+# resource_group = sys.argv[1]
+# service_name = sys.argv[2]
+# apis = sys.argv[3]
+# rtype = sys.argv[4]
+# operation = sys.argv[5]
 
 def get_token():
     url = "https://login.microsoftonline.com/0c88fa98-b222-4fd8-9414-559fa424ce64/oauth2/token"
@@ -57,4 +68,4 @@ def put_for_policy_update(resource_group , service_name , apis , rtype ,  operat
     response = requests.request("PUT", url, headers=headers, data=payload)
     print(response.text)
 
-put_for_policy_update(resource_group , service_name , apis , rtype ,  operation)
+put_for_policy_update(args.resource_group , args.service_name , args.apis , args.rtype ,  args.operation)
