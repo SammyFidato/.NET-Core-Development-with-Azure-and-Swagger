@@ -45,7 +45,7 @@ jobs:
 
       - name: LS
         run: |
-          cd ${{ env.GITHUB_WORKSPACE }}
+          cd ${{ github.worspace }}
           ls -R
 
       - name: 'Deploy to Azure WebApp'
@@ -64,13 +64,13 @@ jobs:
         uses: Amadevus/pwsh-script@v2.0.1
         with:
           # PowerShell script to execute in Actions-hydrated context
-          script: ${{ env.GITHUB_WORKSPACE }}/.github/workflows/ImportAPIM/script.ps1  ${{ github.run_id }}
+          script: ${{ github.worspace }}/.github/workflows/ImportAPIM/script.ps1  ${{ github.run_id }}
 
       - uses: actions/setup-python@v2
         with:
           python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
       - run: |
-            cd  ${{ env.GITHUB_WORKSPACE }}/.github/workflows/CreatePolicy/
+            cd  ${{ github.worspace }}/.github/workflows/CreatePolicy/
             pip install -r  ./requirements.txt
             python ./apply-policy.py `
                       --resource_group aspdotnetswagger `
