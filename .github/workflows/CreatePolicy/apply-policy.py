@@ -28,8 +28,8 @@ def get_token():
     response = requests.request("POST", url, headers=headers, data=payload)
     return (str(json.loads(response.text)['access_token']))
 
-def get_policy_from_xml():
-    with open(filename,'r') as file:
+def get_policy_from_xml(apis):
+    with open(apis,'r') as file:
         policy = file.read()
     return(str(policy))
 
@@ -53,7 +53,7 @@ def put_for_policy_update(resource_group , service_name , apis , rtype ,  operat
     payload = json.dumps({
     "properties": {
         "format": "xml",
-        "value": get_policy_from_xml()
+        "value": get_policy_from_xml(apis)
     }
     })
     headers = {
@@ -66,5 +66,5 @@ def put_for_policy_update(resource_group , service_name , apis , rtype ,  operat
     
 if __name__ == "__main__":
     for _ in apis_list:
-        put_for_policy_update(args.resource_group , args.service_name , _+".xml" , args.rtype ,  args.operation)
+        put_for_policy_update(args.resource_group , args.service_name , (_+".xml") , args.rtype ,  args.operation)
 
