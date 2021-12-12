@@ -48,7 +48,7 @@ jobs:
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: ${{ env.GITHUB_WORKSPACE }}/DotNet-Azure-Swagger/myProject/published/
+          package:  ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/published/
 
       - name: 'Delay'
         run: sleep 10s
