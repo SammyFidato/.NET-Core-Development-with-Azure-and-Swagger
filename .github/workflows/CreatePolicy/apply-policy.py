@@ -65,7 +65,7 @@ def put_for_policy_update(resource_group , service_name , apis , rtype ,  operat
     response = requests.request("PUT", url, headers=headers, data=payload)
     print(response.text)
     
-if __name__ == “__main__”:
+if __name__ == "__main__":
     for _ in apis_list:
         put_for_policy_update(args.resource_group , args.service_name , _ , args.rtype ,  args.operation)
 
