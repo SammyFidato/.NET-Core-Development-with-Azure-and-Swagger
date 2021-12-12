@@ -15,7 +15,7 @@ parser.add_argument('--operation', help='Operation Name')
 
 args=parser.parse_args()
 
-file =  args.operation+".xml"
+filename =  args.operation+".xml"
 
 def get_token():
     url = "https://login.microsoftonline.com/0c88fa98-b222-4fd8-9414-559fa424ce64/oauth2/token"
@@ -29,7 +29,7 @@ def get_token():
     return (str(json.loads(response.text)['access_token']))
 
 def get_policy_from_xml():
-    with open(file,'r') as file:
+    with open(filename,'r') as file:
         policy = file.read()
     return(str(policy))
 
