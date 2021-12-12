@@ -66,5 +66,5 @@ def put_for_policy_update(resource_group , service_name , apis , rtype ,  operat
     
 if __name__ == "__main__":
     for _ in apis_list:
-        put_for_policy_update(args.resource_group , args.service_name , (_+".xml") , args.rtype ,  args.operation)
+        put_for_policy_update(args.resource_group , args.service_name , args.apis , args.rtype ,  (_+".xml"))
 
