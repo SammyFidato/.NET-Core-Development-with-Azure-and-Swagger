@@ -13,14 +13,9 @@ parser.add_argument('--apis', help='Apis Name')
 parser.add_argument('--rtype', help='Type of the API (get,put,post etc)')
 parser.add_argument('--operation', help='Operation Name')
 
-file =  args.operation+".xml"
 args=parser.parse_args()
 
-# resource_group = sys.argv[1]
-# service_name = sys.argv[2]
-# apis = sys.argv[3]
-# rtype = sys.argv[4]
-# operation = sys.argv[5]
+file =  args.operation+".xml"
 
 def get_token():
     url = "https://login.microsoftonline.com/0c88fa98-b222-4fd8-9414-559fa424ce64/oauth2/token"
