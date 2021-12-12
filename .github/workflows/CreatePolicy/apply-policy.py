@@ -15,7 +15,7 @@ parser.add_argument('--operation', help='Operation Name')
 
 args=parser.parse_args()
 
-apis_list = (args.apis.replace("[","")).replace("]","").split(",")
+apis_list = (args.operation.replace("[","")).replace("]","").split(",")
 
 def get_token():
     url = "https://login.microsoftonline.com/0c88fa98-b222-4fd8-9414-559fa424ce64/oauth2/token"
@@ -42,7 +42,6 @@ def get_for_if_match(resource_group , service_name):
     }
     response = requests.request("GET", url, headers=headers, data=payload)
     if response.status_code == 200:
-        print("kakhagagha" + str(json.loads(response.content)['etag']))
         return ( json.loads(response.content)['etag'])
     else:
         print("Error generating Etag : for If match")
