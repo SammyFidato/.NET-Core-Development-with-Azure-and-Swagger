@@ -108,6 +108,11 @@ namespace myProject.Controllers
 
         }
         
-
+        [HttpGet]
+        [Route("Dhoom3")]
+        public async Task<string> ImageAsync4()
+        {
+            return "This is good message";
+        }
     }
 }
