@@ -13,7 +13,7 @@ parser.add_argument('--apis', help='Apis Name')
 parser.add_argument('--rtype', help='Type of the API (get,put,post etc)')
 parser.add_argument('--operation', help='Operation Name')
 
-file =  str(args.operation)+".xml"
+file =  args.operation+".xml"
 args=parser.parse_args()
 
 # resource_group = sys.argv[1]
@@ -69,7 +69,5 @@ def put_for_policy_update(resource_group , service_name , apis , rtype ,  operat
     response = requests.request("PUT", url, headers=headers, data=payload)
     print(response.text)
 
-directory = os.getcwd()
-print("HELOOOOOOOOOOOOOOO" + str(directory))
 put_for_policy_update(args.resource_group , args.service_name , args.apis , args.rtype ,  args.operation)
 
