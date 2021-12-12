@@ -29,7 +29,7 @@ def get_token():
     return (str(json.loads(response.text)['access_token']))
 
 def get_policy_from_xml():
-    with open('policy.xml','r') as file:
+    with open(file,'r') as file:
         policy = file.read()
     return(str(policy))
 
