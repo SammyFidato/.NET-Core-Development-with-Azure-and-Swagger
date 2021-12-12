@@ -15,7 +15,7 @@ parser.add_argument('--operation', help='Operation Name')
 
 args=parser.parse_args()
 
-apis_list = xxlist = (args.xlist.replace("[","")).split(",")
+apis_list = (args.apis.replace("[","")).split(",")
 filename =  args.operation+".xml"
 
 def get_token():
