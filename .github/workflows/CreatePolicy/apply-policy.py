@@ -15,6 +15,7 @@ parser.add_argument('--operation', help='Operation Name')
 
 args=parser.parse_args()
 
+apis_list = xxlist = (args.xlist.replace("[","")).split(",")
 filename =  args.operation+".xml"
 
 def get_token():
@@ -63,6 +64,8 @@ def put_for_policy_update(resource_group , service_name , apis , rtype ,  operat
     }
     response = requests.request("PUT", url, headers=headers, data=payload)
     print(response.text)
-
-put_for_policy_update(args.resource_group , args.service_name , args.apis , args.rtype ,  args.operation)
+    
+if __name__ == “__main__”:
+    for _ in apis_list:
+        put_for_policy_update(args.resource_group , args.service_name , _ , args.rtype ,  args.operation)
 
