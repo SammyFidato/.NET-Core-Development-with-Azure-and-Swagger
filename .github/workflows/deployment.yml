@@ -45,6 +45,9 @@ jobs:
 
       - name: LS
         run: |
+          echo ${{ github.worspace }}
+          echo ${{ github.worspace }}
+          echo ${github.worspace}
           cd ${{ github.worspace }}
           ls -R
 
