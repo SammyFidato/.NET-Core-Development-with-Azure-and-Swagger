@@ -42,8 +42,6 @@ jobs:
 
       - name: Publish app for deploy
         run: |
-          cd ${{ github.workspace }}
-          mkdir published
           dotnet publish --configuration Release --no-build --output ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
 
       - name: LS
@@ -56,7 +54,7 @@ jobs:
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package:  ./DotNet-Azure-Swagger/myProject
+          package:  ./DotNet-Azure-Swagger/myProject/webapp
           
       - name: 'Delay'
         run: sleep 10s
