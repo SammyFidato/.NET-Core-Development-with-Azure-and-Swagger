@@ -46,8 +46,7 @@ jobs:
       - name: LS
         run: |
           echo ${{ github.workspace }}
-          echo ${{ github.workspace }}
-          echo  ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/webapp/
+          cd ${{ github.workspace }}
           ls -R
 
       - name: 'Deploy to Azure WebApp'
