@@ -13,7 +13,7 @@ parser.add_argument('--apis', help='Apis Name')
 parser.add_argument('--rtype', help='Type of the API (get,put,post etc)')
 parser.add_argument('--operation', help='Operation Name')
 
-
+file =  str(args.operation)+".xml"
 args=parser.parse_args()
 
 # resource_group = sys.argv[1]
