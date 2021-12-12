@@ -43,6 +43,9 @@ jobs:
       - name: Publish app for deploy
         run: dotnet publish --configuration Release --no-build --output ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
 
+      - name: LS
+        run: ls -R
+
       - name: 'Deploy to Azure WebApp'
         uses: azure/webapps-deploy@v1
         with:
