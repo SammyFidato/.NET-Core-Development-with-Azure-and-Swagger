@@ -15,8 +15,7 @@ parser.add_argument('--operation', help='Operation Name')
 
 args=parser.parse_args()
 
-apis_list = (args.apis.replace("[","")).split(",")
-filename =  args.operation+".xml"
+apis_list = (args.apis.replace("[","")).replace("]","").split(",")
 
 def get_token():
     url = "https://login.microsoftonline.com/0c88fa98-b222-4fd8-9414-559fa424ce64/oauth2/token"
@@ -67,5 +66,5 @@ def put_for_policy_update(resource_group , service_name , apis , rtype ,  operat
     
 if __name__ == "__main__":
     for _ in apis_list:
-        put_for_policy_update(args.resource_group , args.service_name , _ , args.rtype ,  args.operation)
+        put_for_policy_update(args.resource_group , args.service_name , _+".xml" , args.rtype ,  args.operation)
 
