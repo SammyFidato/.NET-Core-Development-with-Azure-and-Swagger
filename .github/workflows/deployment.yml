@@ -1,18 +1,13 @@
 name: "Build and Deploy"
 
 on:
-  workflow_dispatch:
-    inputs:
-      loglevel:
-        description: "Enter log level"
-        required: true
-#   push:
-#     branches:
-#       - master
-#     paths-ignore:
-#       - '**/*.md'
-#       - '**/*.gitignore'
-#       - '**/*.gitattributes'
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - '**/*.md'
+      - '**/*.gitignore'
+      - '**/*.gitattributes'
 
 env:
   AZURE_WEBAPP_NAME: aspdotnetswagger  # set this to your application's name
