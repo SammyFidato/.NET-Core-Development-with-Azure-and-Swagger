@@ -96,5 +96,10 @@ jobs:
           # PowerShell script to execute in Actions-hydrated context
           script: ${{ github.workspace }}/.github/workflows/ImportAPIM/script.ps1 ${{ github.run_id }} ${{ secrets.SP_SECRET }}
 
-      
-
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
+      - run: |
+            cd  ${{ github.workspace }}/.github/workflows/CreatePolicy/
+            pip install -r  ./requirements.txt
+            python ./apply-policy.py --resource_group aspdotnetswagger --service_name aspdotnetswagger --apis DotnetSwagger --rtype get --operation [DeleteAllBlobs,UploadFiles]
