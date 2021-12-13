@@ -98,7 +98,7 @@ jobs:
         uses: Amadevus/pwsh-script@v2.0.1
         with:
           # PowerShell script to execute in Actions-hydrated context
-          script: ${{ github.workspace }}/.github/workflows/ImportAPIM/script.ps1  ${{ github.run_id }}
+          script: ${{ github.workspace }}/.github/workflows/ImportAPIM/script.ps1  ${{ github.run_id }} ${{ secrets.SP_SECRET }}
 
       - uses: actions/setup-python@v2
         with:
