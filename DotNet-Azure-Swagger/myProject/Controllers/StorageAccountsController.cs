@@ -99,20 +99,16 @@ namespace myProject.Controllers
             return "NULL";
 
         }
-        [HttpGet]
-        [Route("Aai_hu_indore_se")]
-        public async Task<string> ImageAsync23()
-        {
-
-            return "NULL";
-
-        }
+        
         
         [HttpGet]
-        [Route("Dhoom3")]
-        public async Task<string> ImageAsync4()
+        [Route("NewfromCICD")]
+        public async Task<string> ImageAsync1234()
         {
-            return "This is good message";
+
+            return "Return NewfromCICD";
+
         }
+
     }
 }
