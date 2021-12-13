@@ -91,19 +91,15 @@ jobs:
           
       - name: 'Delay'
         run: sleep 10s
-
+        
+        
       - name: PowerShell script
         # You may pin to the exact commit or the version.
         # uses: Amadevus/pwsh-script@1f1751bbf3d1a92127bfc6c32403283625880cbf
         uses: Amadevus/pwsh-script@v2.0.1
         with:
           # PowerShell script to execute in Actions-hydrated context
-          script: ${{ github.workspace }}/.github/workflows/ImportAPIM/script.ps1  ${{ github.run_id }} ${{ secrets.SP_SECRET }}
+          script: "${{ github.workspace }}/.github/workflows/ImportAPIM/script.ps1 ${{ github.run_id }} ${{ secrets.SP_SECRET }}
 
-      - uses: actions/setup-python@v2
-        with:
-          python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
-      - run: |
-            cd  ${{ github.workspace }}/.github/workflows/CreatePolicy/
-            pip install -r  ./requirements.txt
-            python ./apply-policy.py --resource_group aspdotnetswagger --service_name aspdotnetswagger --apis DotnetSwagger --rtype get --operation [Aai_hu_indore_se,UploadFiles] 
+      
+
